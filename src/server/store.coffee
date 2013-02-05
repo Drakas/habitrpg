@@ -25,9 +25,7 @@ module.exports = (store) ->
       .limit(1)
 
   store.queryAccess "users", "withIdAndToken", (id, token, next) ->
-    return next(false) unless @session and @session.userId # https://github.com/codeparty/racer/issues/37
-    isServer = not @req.socket
-    next(isServer)
+    next(true)
 
   ###
     Party permissions
